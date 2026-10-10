@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "internetdata",
   "version": "1.0.0",
-  "description": "Look into the InternetData databases and which ones your organization holds.",
+  "description": "Browse the InternetData IP databases and which ones your organization holds: what each contains, sample rows, sizes and build dates, checksums for a copy you hold, and your download history.",
   "author": {
     "name": "InternetData",
     "email": "support@internetdata.io",
@@ -11,22 +11,24 @@
   "homepage": "https://docs.internetdata.io/integrations/mcp",
   "repository": "https://github.com/internetdata/openai-plugin",
   "license": "MIT",
-  "keywords": ["mcp"],
+  "keywords": ["ip database", "ip intelligence", "vpn", "proxy", "mmdb", "mcp"],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "InternetData",
-        "shortDescription": "Look into IP databases",
-        "longDescription": "Look into the InternetData databases: which ones your organization holds, what is inside one, how big it is, whether a downloaded copy is intact and why a download failed. You sign in with your InternetData account, and every tool is read-only.",
+        "shortDescription": "IP and ASN databases",
+        "longDescription": "InternetData publishes IP and ASN databases: geolocation, anonymity, ownership and network data, as gzipped CSV and as MMDB. Ask about any of them: which ones your organization holds, what is inside each, a few sample rows, sizes and build dates, whether a copy you downloaded is intact, and what happened to a download that failed. The Open databases, such as Tor IP and ASN, answer for any account under CC BY-SA 4.0.\n\nYou sign in with your InternetData account and pick the API key it uses, and the key itself never reaches ChatGPT or Codex. Every tool is read-only, and nothing is downloaded into the conversation.",
         "developerName": "InternetData",
         "category": "Data & Analytics",
-        "capabilities": ["Look into databases"],
+        "capabilities": ["Look into databases", "Check a downloaded copy", "Explain a failed download"],
         "websiteURL": "https://internetdata.io",
         "supportURL": "https://internetdata.io/contact",
         "privacyPolicyURL": "https://internetdata.io/privacy",
         "termsOfServiceURL": "https://internetdata.io/terms",
         "defaultPrompt": [
-          "Which InternetData databases does my organization hold?"
+          "Which InternetData databases does my organization hold?",
+          "What columns does the Tor IP database have? Show me a few rows.",
+          "Did any of our recent database downloads fail?"
         ],
         "composerIcon": "./assets/icon.svg",
         "logo": "./assets/icon.svg"
@@ -38,25 +40,25 @@
               "description": "List the databases and which ones the organization holds",
               "prompt": "Which InternetData databases does my organization hold?",
               "tools_triggered": "list_databases",
-              "expected_behavior": "Lists the published database families with each one's standing, licensed, expired or unlicensed, for the reviewer account's organization."
+              "expected_behavior": "Lists each database family with its standing, licensed, expired or unlicensed, and marks the Open ones."
             },
             {
-              "description": "Describe a database's columns",
-              "prompt": "What columns are in the newest version of a database my organization holds?",
+              "description": "Describe an Open database",
+              "prompt": "What columns does the newest Tor IP database have? Show me a few sample rows.",
               "tools_triggered": "list_databases, database_metadata",
-              "expected_behavior": "Picks a licensed family, passes its versioned id and describes its columns, sample rows, row count and build date."
+              "expected_behavior": "Passes the versioned id tor_ip_v1 and describes its columns and a few sample rows, saying the samples show the shape of the data and are not enough to count from."
             },
             {
-              "description": "Report a database's size",
-              "prompt": "How big is each format of the newest copy of a database my organization holds?",
-              "tools_triggered": "list_databases, database_metadata",
-              "expected_behavior": "Gives the size of each format from the database's metadata, without downloading anything."
+              "description": "Report a database's size and build date",
+              "prompt": "How big is each format of the newest Tor IP database, and when was it built?",
+              "tools_triggered": "database_metadata",
+              "expected_behavior": "Gives the size of the gzipped CSV and the MMDB and the build date from the metadata, without downloading anything."
             },
             {
               "description": "Fetch a checksum",
-              "prompt": "Give me the SHA-256 of the newest CSV copy of a database my organization holds.",
-              "tools_triggered": "list_databases, database_checksum",
-              "expected_behavior": "Returns the checksum for that version and format."
+              "prompt": "What is the SHA-256 of the newest Tor IP database's gzipped CSV?",
+              "tools_triggered": "database_checksum",
+              "expected_behavior": "Returns the SHA-256 of tor_ip_v1's csvgz. Tor IP is Open, so any account gets it."
             },
             {
               "description": "Explain recent downloads",
@@ -67,11 +69,11 @@
           ],
           "negative": [
             {
-              "description": "No tool downloads a database: the answer says the download happens in the console or with the CLI.",
-              "prompt": "Download the whole database into this chat."
+              "description": "No tool downloads a database: the answer says the download happens in the console or with the InternetData CLI.",
+              "prompt": "Download the whole Tor IP database into this chat."
             },
             {
-              "description": "Every tool is read-only, so the plugin cannot change an account.",
+              "description": "Every tool is read-only, so the plugin cannot change an account or its keys.",
               "prompt": "Delete my organization's API keys."
             },
             {
@@ -85,7 +87,7 @@
       },
       "publication": {
         "countries": [],
-        "release_notes": "First release."
+        "release_notes": "First release: the InternetData MCP server's four read-only tools, with skills for looking into the databases and analyzing one."
       }
     }
   }
