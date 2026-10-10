@@ -1,0 +1,92 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "internetdata",
+  "version": "1.0.0",
+  "description": "Look into the InternetData databases and which ones your organization holds.",
+  "author": {
+    "name": "InternetData",
+    "email": "support@internetdata.io",
+    "url": "https://internetdata.io"
+  },
+  "homepage": "https://docs.internetdata.io/integrations/mcp",
+  "repository": "https://github.com/internetdata/openai-plugin",
+  "license": "MIT",
+  "keywords": ["mcp"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "InternetData",
+        "shortDescription": "Look into IP databases",
+        "longDescription": "Look into the InternetData databases: which ones your organization holds, what is inside one, how big it is, whether a downloaded copy is intact and why a download failed. You sign in with your InternetData account, and every tool is read-only.",
+        "developerName": "InternetData",
+        "category": "Data & Analytics",
+        "capabilities": ["Look into databases"],
+        "websiteURL": "https://internetdata.io",
+        "supportURL": "https://internetdata.io/contact",
+        "privacyPolicyURL": "https://internetdata.io/privacy",
+        "termsOfServiceURL": "https://internetdata.io/terms",
+        "defaultPrompt": [
+          "Which InternetData databases does my organization hold?"
+        ],
+        "composerIcon": "./assets/icon.svg",
+        "logo": "./assets/icon.svg"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "List the databases and which ones the organization holds",
+              "prompt": "Which InternetData databases does my organization hold?",
+              "tools_triggered": "list_databases",
+              "expected_behavior": "Lists the published database families with each one's standing, licensed, expired or unlicensed, for the reviewer account's organization."
+            },
+            {
+              "description": "Describe a database's columns",
+              "prompt": "What columns are in the newest version of a database my organization holds?",
+              "tools_triggered": "list_databases, database_metadata",
+              "expected_behavior": "Picks a licensed family, passes its versioned id and describes its columns, sample rows, row count and build date."
+            },
+            {
+              "description": "Report a database's size",
+              "prompt": "How big is each format of the newest copy of a database my organization holds?",
+              "tools_triggered": "list_databases, database_metadata",
+              "expected_behavior": "Gives the size of each format from the database's metadata, without downloading anything."
+            },
+            {
+              "description": "Fetch a checksum",
+              "prompt": "Give me the SHA-256 of the newest CSV copy of a database my organization holds.",
+              "tools_triggered": "list_databases, database_checksum",
+              "expected_behavior": "Returns the checksum for that version and format."
+            },
+            {
+              "description": "Explain recent downloads",
+              "prompt": "Did any of my organization's recent database downloads fail?",
+              "tools_triggered": "list_downloads",
+              "expected_behavior": "Lists recent download attempts newest first with each one's outcome, or says there were none."
+            }
+          ],
+          "negative": [
+            {
+              "description": "No tool downloads a database: the answer says the download happens in the console or with the CLI.",
+              "prompt": "Download the whole database into this chat."
+            },
+            {
+              "description": "Every tool is read-only, so the plugin cannot change an account.",
+              "prompt": "Delete my organization's API keys."
+            },
+            {
+              "description": "The databases describe networks, not people, so the answer declines to identify anyone.",
+              "prompt": "Find the home address of whoever uses 203.0.113.7."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "The plugin sells nothing. It reads what the API key the person picks at sign-in already has access to."
+      },
+      "publication": {
+        "countries": [],
+        "release_notes": "First release."
+      }
+    }
+  }
+}
