@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.2 - 2026-10-14
+
+### Fixes
+
+- Link the walkthrough video OpenAI's review asks for ([`a1a63ad`](https://github.com/internetdata/openai-plugin/commit/a1a63ad804d82af67a3665917bffd6a8732d2646))
+
 ## 1.0.1 - 2026-10-13
 
 ### Fixes
