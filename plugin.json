@@ -82,6 +82,7 @@
             }
           ]
         },
+        "demo_recording_url": "https://youtu.be/MyP_YQ5FxP8",
         "commerce": false,
         "commerce_description": "The plugin sells nothing. It reads what the API key the person picks at sign-in already has access to."
       },
