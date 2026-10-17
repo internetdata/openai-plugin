@@ -17,7 +17,7 @@ codex plugin add internetdata@internetdata
 codex mcp login internetdata
 ```
 
-The last line signs you in with your InternetData account, where you pick the API key Codex should use. Codex never sees the key: our MCP server uses it on your behalf. The Codex CLI, its IDE extension and Codex in the ChatGPT desktop app read the same configuration, so one install covers all three. Any account can look into every database. The Open ones, such as Tor IP and ASN, are licensed to every organization from the start and are free under CC BY-SA 4.0; a checksum or a download of the rest needs a license.
+The last line signs you in with your InternetData account, where you pick the API key Codex should use. Codex never sees the key: our MCP server uses it on your behalf. The key needs the `db.download` scope, which your organization's `Default` key has. The Codex CLI, its IDE extension and Codex in the ChatGPT desktop app read the same configuration, so one install covers all three. Any account can look into every database. The Open ones, such as Tor IP and ASN, are licensed to every organization from the start and are free under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). A checksum or a download of the rest needs a license, so [request an evaluation](https://internetdata.io/contact?purpose=evaluation&subject=Evaluation+license) if your organization doesn't have one yet.
 
 To disconnect Codex, run `codex mcp logout internetdata`, or remove it under Connected applications at https://app.internetdata.io/settings/account/sessions. Access ends within about a minute.
 
