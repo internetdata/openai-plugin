@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.3 - 2026-10-17
+
+### Fixes
+
+- Name the key's scope, and where to ask for a license ([`14fdab2`](https://github.com/internetdata/openai-plugin/commit/14fdab23d203552c2d29416684777a43802e62a2))
+
 ## 1.0.2 - 2026-10-14
 
 ### Fixes
