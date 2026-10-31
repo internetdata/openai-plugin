@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.4 - 2026-10-31
+
+### Fixes
+
+- Link the listing in the plugin directory ChatGPT and Codex share ([`7f6c96b`](https://github.com/internetdata/openai-plugin/commit/7f6c96b660f9e379b7d8de2c5c723e9fa7eeed6b))
+
 ## 1.0.3 - 2026-10-17
 
 ### Fixes
