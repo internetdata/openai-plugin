@@ -2,6 +2,13 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.5 - 2026-11-02
+
+### Fixes
+
+- Say that ChatGPT sends the database IDs too ([`d0dbe4b`](https://github.com/internetdata/openai-plugin/commit/d0dbe4bcff29814b6f9955e4fb47a98e1b94c03d))
+- Write ID, not id, in the skills and review cases ([`49a3be4`](https://github.com/internetdata/openai-plugin/commit/49a3be45f74f231ffbe23f384a5029f2bc3e6fe6))
+
 ## 1.0.4 - 2026-10-31
 
 ### Fixes

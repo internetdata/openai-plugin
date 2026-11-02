@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "internetdata",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Browse the InternetData IP databases and which ones your organization holds: what each contains, sample rows, sizes and build dates, checksums for a copy you hold, and your download history.",
   "author": {
     "name": "InternetData",
@@ -88,7 +88,7 @@
       },
       "publication": {
         "countries": [],
-        "release_notes": "Only the README changed: it now links this listing. The tools and skills are the same as before."
+        "release_notes": "The skills write ID where they wrote id. The README links this listing and says ChatGPT, as well as Codex, sends the database IDs you ask about. The tools are the same as before."
       }
     }
   }
