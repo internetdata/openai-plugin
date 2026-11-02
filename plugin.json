@@ -46,7 +46,7 @@
               "description": "Describe an Open database",
               "prompt": "What columns does the newest Tor IP database have? Show me a few sample rows.",
               "tools_triggered": "list_databases, database_metadata",
-              "expected_behavior": "Passes the versioned id tor_ip_v1 and describes its columns and a few sample rows, saying the samples show the shape of the data and are not enough to count from."
+              "expected_behavior": "Passes the versioned ID tor_ip_v1 and describes its columns and a few sample rows, saying the samples show the shape of the data and are not enough to count from."
             },
             {
               "description": "Report a database's size and build date",
