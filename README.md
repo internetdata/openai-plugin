@@ -37,7 +37,7 @@ To disconnect Codex, run `codex mcp logout internetdata`, or remove it under Con
 
 ## What it sends
 
-The plugin runs nothing on your machine. Codex sends the database ids you ask about to `https://mcp.internetdata.io/mcp`, which calls the InternetData API with the key you picked and returns the answer. Each request is logged against that key as any API call is. Our privacy policy is at https://internetdata.io/privacy, and questions go to support@internetdata.io.
+The plugin runs nothing on your machine. ChatGPT or Codex sends the database IDs you ask about to `https://mcp.internetdata.io/mcp`, which calls the InternetData API with the key you picked and returns the answer. Each request is logged against that key as any API call is. Our privacy policy is at https://internetdata.io/privacy, and questions go to support@internetdata.io.
 
 ## Other Libraries
 
