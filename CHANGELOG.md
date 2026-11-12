@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.0.6 - 2026-11-12
+
+### Fixes
+
+- The listing reads in sections, each under a heading, with bullets ([`0f15ce1`](https://github.com/internetdata/openai-plugin/commit/0f15ce1ef50d965f9e51c43b109671d957a1b20d))
+
 ## 1.0.5 - 2026-11-02
 
 ### Fixes
