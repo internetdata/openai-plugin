@@ -5,7 +5,7 @@
 
 The official [InternetData](https://internetdata.io) plugin for [ChatGPT](https://chatgpt.com) and [Codex](https://developers.openai.com/codex).
 
-InternetData publishes IP and ASN databases: geolocation, anonymity, ownership and network data, as gzipped CSV and as MMDB. With this plugin you can ask about any of them: which ones your organization holds, what is inside each, sample rows, sizes and build dates, whether a copy you downloaded is intact, and what happened to a download that failed.
+InternetData answers what its data says about any IP address, AS or domain, and publishes the databases behind it. With this plugin you can ask about an address, a list of them, a domain or an AS: where an address is, whose network it's on, whether it's a VPN, a proxy, Tor or a hosting provider, a domain's DNS records and an AS's prefixes. You can also ask about the databases: which ones your organization holds, what is inside each, whether a copy you downloaded is intact, and what happened to a download that failed.
 
 ## Getting Started
 
@@ -17,27 +17,32 @@ codex plugin add internetdata@internetdata
 codex mcp login internetdata
 ```
 
-The last line signs you in with your InternetData account, where you pick the API key Codex should use. Codex never sees the key: our MCP server uses it on your behalf. The key needs the `db.download` scope, which your organization's `Default` key has. The Codex CLI, its IDE extension and Codex in the ChatGPT desktop app read the same configuration, so one install covers all three. Any account can look into every database. The Open ones, such as Tor IP and ASN, are licensed to every organization from the start and are free under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). A checksum or a download of the rest needs a license, so [request an evaluation](https://internetdata.io/contact?purpose=evaluation&subject=Evaluation+license) if your organization doesn't have one yet.
+The last line signs you in with your InternetData account, where you pick the API key Codex should use. Codex never sees the key: our MCP server uses it on your behalf. Any key answers lookups, with every field on a paid plan and in the free plan's first 100 lookups each day; the database tools need the `db.download` scope, which your organization's `Default` key has. The Codex CLI, its IDE extension and Codex in the ChatGPT desktop app read the same configuration, so one install covers all three. Any account can look into every database. The Open ones, such as Tor IP and ASN, are licensed to every organization from the start and are free under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). A checksum or a download of the rest needs a license, so [request an evaluation](https://internetdata.io/contact?purpose=evaluation&subject=Evaluation+license) if your organization doesn't have one yet.
 
 To disconnect Codex, run `codex mcp logout internetdata`, or remove it under Connected applications at https://app.internetdata.io/settings/account/sessions. Access ends within about a minute.
 
 ## What's in it
 
-- The InternetData MCP server at `https://mcp.internetdata.io/mcp`, with four read-only tools: `list_databases`, `database_metadata`, `database_checksum` and `list_downloads`.
-- Two skills that say how to use them well:
+- The InternetData MCP server at `https://mcp.internetdata.io/mcp`, with nine read-only tools: `lookup_ip`, `lookup_ips`, `lookup_asn`, `lookup_domain` and `my_entitlement` for lookups, and `list_databases`, `database_metadata`, `database_checksum` and `list_downloads` for the databases.
+- Five skills that say how to use them well:
+  - `check-ips` looks up one address or a list: where each is, whose network, and whether it's a VPN, a proxy, Tor or a hosting provider.
+  - `review-traffic` screens an export or a log for anonymized traffic, keeping each answer next to its record.
+  - `investigate-domain-or-as` looks into a domain's DNS, ranges and disposable flag, or an AS's operator and prefixes.
   - `database-files` answers which databases you hold, how big they are, whether your copy is intact and why a download failed.
   - `analyze-database` explains a database's columns and sample rows, and in Codex analyzes a downloaded copy.
 
 ## Try it
 
-- "Which IP databases are we licensed for, and when were they last built?"
+- "Where is 8.8.8.8, and whose network is it on?"
+- "Check these addresses for VPNs, proxies and Tor: 45.83.91.1, 185.220.101.1, 8.8.8.8"
+- "Does example.com have a mail server, and is it a disposable email domain?"
+- "Who operates AS15169?"
 - "What columns does tor_ip_v1 have? Show me a few sample rows."
-- "Does the checksum of my vpn_ip_v1.csv.gz match the published one?"
 - "Our download failed last night. What happened?"
 
 ## What it sends
 
-The plugin runs nothing on your machine. ChatGPT or Codex sends the database IDs you ask about to `https://mcp.internetdata.io/mcp`, which calls the InternetData API with the key you picked and returns the answer. Each request is logged against that key as any API call is. Our privacy policy is at https://internetdata.io/privacy, and questions go to support@internetdata.io.
+The plugin runs nothing on your machine. ChatGPT or Codex sends the addresses, domains, AS numbers and database IDs you ask about to `https://mcp.internetdata.io/mcp`, which calls the InternetData API with the key you picked and returns the answer. Each request is logged against that key as any API call is. Our privacy policy is at https://internetdata.io/privacy, and questions go to support@internetdata.io.
 
 ## Other Libraries
 
@@ -45,7 +50,7 @@ There are official InternetData client libraries available for many languages in
 
 ## About InternetData
 
-Geolocation, anonymity, ownership and network databases for IP addresses and AS numbers, licensed as files you download and query yourself.
+Trusted IP data and domain intelligence: an API to look up any address, AS or domain, and databases you hold.
 
 [<img src="https://s3.internetdata.io/internetdata-public/brand/mark.svg" alt="InternetData" height="64"/>](https://internetdata.io/)
 

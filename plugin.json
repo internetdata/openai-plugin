@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "internetdata",
   "version": "1.0.6",
-  "description": "Browse the InternetData IP databases and which ones your organization holds: what each contains, sample rows, sizes and build dates, checksums for a copy you hold, and your download history.",
+  "description": "Look up any IP address, AS or domain with InternetData: where an address is, whose network it's on, whether it's a VPN, a proxy, Tor or a hosting provider, a domain's DNS records and an AS's prefixes. Browse the InternetData databases and which ones your organization holds, too.",
   "author": {
     "name": "InternetData",
     "email": "support@internetdata.io",
@@ -11,24 +11,38 @@
   "homepage": "https://docs.internetdata.io/integrations/mcp",
   "repository": "https://github.com/internetdata/openai-plugin",
   "license": "MIT",
-  "keywords": ["ip database", "ip intelligence", "vpn", "proxy", "mmdb", "mcp"],
+  "keywords": [
+    "ip lookup",
+    "ip intelligence",
+    "domain intelligence",
+    "vpn detection",
+    "proxy detection",
+    "ip geolocation",
+    "ip database",
+    "mmdb",
+    "mcp"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "InternetData",
-        "shortDescription": "IP and ASN databases",
-        "longDescription": "📦 Ask about InternetData's IP and ASN databases right in your chat: what's in them, which ones you hold, and whether a download came through.\n\n📚 What it answers\n• Which databases your organization holds\n• What's inside each one, with a few sample rows\n• Sizes and build dates\n• Whether a copy you downloaded is intact, and what happened to a download that failed\n\n🌍 What's in the catalog\n• Geolocation, anonymity, ownership and network data\n• As gzipped CSV and as MMDB\n• The Open databases, such as Tor IP and ASN, answer for any account under CC BY-SA 4.0\n\n🔒 Your key stays yours\n• You sign in with your InternetData account and pick the API key it uses, and the key itself never reaches ChatGPT or Codex\n• Every tool is read-only, and nothing is downloaded into the conversation",
+        "shortDescription": "Look up IPs, ASes and domains",
+        "longDescription": "🔎 Look up any IP address, AS or domain and get the answer right in your chat.\n\n🌍 What it answers\n• Where an address is, whose network it's on and who uses it, with its abuse contact\n• Whether it's a VPN, a residential, datacenter, mobile or public proxy, Tor, a privacy relay, a hosting provider or a CDN\n• A domain's DNS records, its organization's IP ranges and whether it's a disposable email domain\n• An AS's operator, its Whois record and the prefixes it announces\n\n📋 Made for real work\n• A whole list of addresses at once\n• A signup or order export, with each answer kept next to its record\n• The plan and allowance behind your API key\n• The InternetData databases, and which ones your organization holds\n\n🔒 Your key stays yours\n• You sign in with your InternetData account and pick the API key it uses, and the key itself never reaches ChatGPT or Codex\n• Every tool is read-only\n• A field your plan doesn't include comes back marked as not covered, never as a no",
         "developerName": "InternetData",
         "category": "Data & Analytics",
-        "capabilities": ["Look into databases", "Check a downloaded copy", "Explain a failed download"],
+        "capabilities": [
+          "Look up IP addresses",
+          "Screen signups and orders",
+          "Look into domains and ASes"
+        ],
         "websiteURL": "https://internetdata.io",
         "supportURL": "https://internetdata.io/contact",
         "privacyPolicyURL": "https://internetdata.io/privacy",
         "termsOfServiceURL": "https://internetdata.io/terms",
         "defaultPrompt": [
-          "Which InternetData databases does my organization hold?",
-          "What columns does the Tor IP database have? Show me a few rows.",
-          "Did any of our recent database downloads fail?"
+          "Where is 8.8.8.8, and whose network is it on?",
+          "Is 185.220.101.1 a VPN, a proxy or Tor?",
+          "Does example.com have a mail server, and is it a disposable email domain?"
         ],
         "composerIcon": "./assets/icon.svg",
         "logo": "./assets/icon.svg"
@@ -36,6 +50,24 @@
       "review": {
         "test_cases": {
           "positive": [
+            {
+              "description": "Look up one address",
+              "prompt": "Where is 8.8.8.8, and whose network is it on?",
+              "tools_triggered": "lookup_ip",
+              "expected_behavior": "Gives the address's country, its network and the company behind it, and reports a field the plan doesn't cover as not covered rather than as a no."
+            },
+            {
+              "description": "Classify a list of addresses at once",
+              "prompt": "Check these addresses for VPNs, proxies and Tor: 45.83.91.1, 185.220.101.1, 8.8.8.8",
+              "tools_triggered": "lookup_ips",
+              "expected_behavior": "Makes one call for the whole list and returns a row per address with its country, network and what it is (VPN, proxy, Tor, hosting or nothing found), flagged addresses first."
+            },
+            {
+              "description": "Look into a domain",
+              "prompt": "Does example.com have a mail server, and is it a disposable email domain?",
+              "tools_triggered": "lookup_domain",
+              "expected_behavior": "Says whether the domain is registered and has MX records, and reports the disposable flag, or says the key's plan doesn't cover it."
+            },
             {
               "description": "List the databases and which ones the organization holds",
               "prompt": "Which InternetData databases does my organization hold?",
@@ -47,24 +79,6 @@
               "prompt": "What columns does the newest Tor IP database have? Show me a few sample rows.",
               "tools_triggered": "list_databases, database_metadata",
               "expected_behavior": "Passes the versioned ID tor_ip_v1 and describes its columns and a few sample rows, saying the samples show the shape of the data and are not enough to count from."
-            },
-            {
-              "description": "Report a database's size and build date",
-              "prompt": "How big is each format of the newest Tor IP database, and when was it built?",
-              "tools_triggered": "database_metadata",
-              "expected_behavior": "Gives the size of the gzipped CSV and the MMDB and the build date from the metadata, without downloading anything."
-            },
-            {
-              "description": "Fetch a checksum",
-              "prompt": "What is the SHA-256 of the newest Tor IP database's gzipped CSV?",
-              "tools_triggered": "database_checksum",
-              "expected_behavior": "Returns the SHA-256 of tor_ip_v1's csvgz. Tor IP is Open, so any account gets it."
-            },
-            {
-              "description": "Explain recent downloads",
-              "prompt": "Did any of my organization's recent database downloads fail?",
-              "tools_triggered": "list_downloads",
-              "expected_behavior": "Lists recent download attempts newest first with each one's outcome, or says there were none."
             }
           ],
           "negative": [
