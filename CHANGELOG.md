@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.1.0 - 2026-11-13
+
+### Features
+
+- Look up IP addresses, ASes and domains ([`9e2034f`](https://github.com/internetdata/openai-plugin/commit/9e2034fe7c573b04519ff00e9c723673faed4d69))
+
 ## 1.0.6 - 2026-11-12
 
 ### Fixes
