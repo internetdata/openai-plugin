@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.1.2 - 2026-11-14
+
+### Fixes
+
+- Point at the lookups for single addresses, as the database skill now can ([`807deb1`](https://github.com/internetdata/openai-plugin/commit/807deb107dba1e95e1b75d75ea442d1a40014ed8))
+
 ## 1.1.1 - 2026-11-14
 
 ### Fixes
