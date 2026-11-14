@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "internetdata",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Look up any IP address, AS or domain with InternetData: where an address is, whose network it's on, whether it's a VPN, a proxy, Tor or a hosting provider, a domain's DNS records and an AS's prefixes. Browse the InternetData databases and which ones your organization holds, too.",
   "author": {
     "name": "InternetData",
@@ -102,7 +102,7 @@
       },
       "publication": {
         "countries": [],
-        "release_notes": "The listing's description reads in sections, each under a heading, with bullets. The tools and skills are the same as 1.0.5's."
+        "release_notes": "Look up IP addresses, lists of them, ASes and domains, with three new skills: check-ips, review-traffic and investigate-domain-or-as. The listing's description reads in sections, each under a heading, with bullets, and the review cases cover the lookups."
       }
     }
   }

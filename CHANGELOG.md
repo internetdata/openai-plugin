@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.1.1 - 2026-11-14
+
+### Fixes
+
+- Count an AS's prefixes from its totals: a big AS's answer lists 100 ([`768f654`](https://github.com/internetdata/openai-plugin/commit/768f654081dff9b2e967dbe5b1ef6023d7c8fdff))
+
 ## 1.1.0 - 2026-11-13
 
 ### Features
