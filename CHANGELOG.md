@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.2.0 - 2026-11-16
+
+### Features
+
+- Report an AS's rank, neighbors and hosted domains ([`9340895`](https://github.com/internetdata/openai-plugin/commit/93408953ff4f08a1251e55e4b63d6f87413d67b4))
+
 ## 1.1.2 - 2026-11-14
 
 ### Fixes
