@@ -2,6 +2,13 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.2.1 - 2026-11-17
+
+### Fixes
+
+- Say when an overage cap, not the plan, held fields back ([`87383c9`](https://github.com/internetdata/openai-plugin/commit/87383c973e9107daf2be0b0d11a69124eadd4e41))
+- Read each list of an AS's neighbors as its first 100 ([`c413ded`](https://github.com/internetdata/openai-plugin/commit/c413deda43228306fdf888a2d0e1b9f1f27e93bc))
+
 ## 1.2.0 - 2026-11-16
 
 ### Features

@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "internetdata",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Look up any IP address, AS or domain with InternetData: where an address is, whose network it's on, whether it's a VPN, a proxy, Tor or a hosting provider, a domain's DNS records and an AS's prefixes. Browse the InternetData databases and which ones your organization holds, too.",
   "author": {
     "name": "InternetData",
@@ -102,7 +102,7 @@
       },
       "publication": {
         "countries": [],
-        "release_notes": "investigate-domain-or-as reports an AS's rank, whether it is Tier 1, how many networks it gets transit from, peers with and provides transit to, and how many domains it hosts."
+        "release_notes": "investigate-domain-or-as reports an AS's rank, whether it is Tier 1, how many networks it gets transit from, peers with and provides transit to, and how many domains it hosts, and reads each list of an AS's neighbors as its first 100. check-ips, review-traffic and investigate-domain-or-as say when an organization's overage cap, not its plan, held fields back."
       }
     }
   }
