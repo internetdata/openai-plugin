@@ -26,14 +26,14 @@
     "com.openai": {
       "interface": {
         "displayName": "InternetData",
-        "shortDescription": "Look up IPs, ASes and domains",
+        "shortDescription": "Look up IPs, ASNs and domains",
         "longDescription": "🔎 Look up any IP address, AS or domain and get the answer right in your chat.\n\n🌍 What it answers\n• Where an address is, whose network it's on and who uses it, with its abuse contact\n• Whether it's a VPN, a residential, datacenter, mobile or public proxy, Tor, a privacy relay, a hosting provider or a CDN\n• A domain's DNS records, its organization's IP ranges and whether it's a disposable email domain\n• An AS's operator, its Whois record and the prefixes it announces\n\n📋 Made for real work\n• A whole list of addresses at once\n• A signup or order export, with each answer kept next to its record\n• The plan and allowance behind your API key\n• The InternetData databases, and which ones your organization holds\n\n🔒 Your key stays yours\n• You sign in with your InternetData account and pick the API key it uses, and the key itself never reaches ChatGPT or Codex\n• Every tool is read-only\n• A field your plan doesn't include comes back marked as not covered, never as a no",
         "developerName": "InternetData",
         "category": "Data & Analytics",
         "capabilities": [
           "Look up IP addresses",
           "Screen signups and orders",
-          "Look into domains and ASes"
+          "Look into domains and ASNs"
         ],
         "websiteURL": "https://internetdata.io",
         "supportURL": "https://internetdata.io/contact",
