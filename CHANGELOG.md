@@ -2,6 +2,13 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.2.2 - 2026-11-19
+
+### Fixes
+
+- Say ASNs, not ASes, in the listing ([`12eb218`](https://github.com/internetdata/openai-plugin/commit/12eb218ec7e771cd43944895da5a6fa9cf56d64a))
+- README: close on the line the SDKs and the MCP server close on ([`9da1d10`](https://github.com/internetdata/openai-plugin/commit/9da1d10131a2cb714af821fad0e1ab685a0f2707))
+
 ## 1.2.1 - 2026-11-17
 
 ### Fixes
