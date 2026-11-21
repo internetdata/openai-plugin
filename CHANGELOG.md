@@ -2,6 +2,13 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.2.3 - 2026-11-21
+
+### Fixes
+
+- Read the service, anycast, carrier and satellite flags ([`499c8f3`](https://github.com/internetdata/openai-plugin/commit/499c8f32b37c1c257be1586e838f0abc62b0fd8a))
+- README: a key needs the ip.lookup scope to look anything up ([`c4efa68`](https://github.com/internetdata/openai-plugin/commit/c4efa68ed59a075fb7ecc6139ae081c3b5b472f9))
+
 ## 1.2.2 - 2026-11-19
 
 ### Fixes
