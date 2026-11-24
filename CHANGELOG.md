@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.3.0 - 2026-11-24
+
+### Features
+
+- check-ips and review-traffic read is_bot and whose bot it is ([`5cafab2`](https://github.com/internetdata/openai-plugin/commit/5cafab2fd203172d43e9067820a9b945c71ada3d))
+
 ## 1.2.3 - 2026-11-21
 
 ### Fixes
