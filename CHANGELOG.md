@@ -2,6 +2,12 @@
 
 What each release changed for you, newest first. Each line is a commit's summary, linked to its full description and diff.
 
+## 1.4.0 - 2026-11-25
+
+### Features
+
+- check-ips and review-traffic check the user agent an address sent ([`5ba5dec`](https://github.com/internetdata/openai-plugin/commit/5ba5dec3bdf8a0d079a57ca7e1b0c385a23a1890))
+
 ## 1.3.0 - 2026-11-24
 
 ### Features
